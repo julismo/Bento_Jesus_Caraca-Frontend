@@ -1,13 +1,14 @@
 # Contexto do Projeto para IAs - Escola Profissional Bento de Jesus Caraça
 
 ## Visão Geral
-Este projeto é um site institucional para a Escola Profissional Bento de Jesus Caraça, focado em apresentar informações sobre a escola, sua história, obras e cursos.
+Este projeto é um site institucional para a Escola Profissional Bento de Jesus Caraça, focado em apresentar informações sobre a escola, sua história, obras e cursos. O sistema inclui uma área administrativa para gerenciamento de conteúdo.
 
 ## Objetivos Principais
 1. Divulgar informações sobre a escola e sua história
 2. Apresentar o catálogo de obras de Bento de Jesus Caraça
 3. Fornecer informações sobre cursos disponíveis
 4. Facilitar comunicação com alunos e visitantes
+5. Permitir gerenciamento de conteúdo via painel administrativo
 
 ## Regras de Negócio
 - Todo o conteúdo deve estar em português
@@ -15,12 +16,17 @@ Este projeto é um site institucional para a Escola Profissional Bento de Jesus 
 - Sistema deve suportar visualização de PDFs
 - Formulários devem validar dados antes do envio
 - Conteúdo deve ser facilmente atualizável
+- Acesso administrativo requer autenticação
+- Apenas administradores podem gerenciar obras
+- Upload de PDFs restrito a administradores
 
 ## Terminologia
 - EPBJC: Escola Profissional Bento de Jesus Caraça
 - BJC: Bento de Jesus Caraça
 - Obras: Referência aos livros e publicações de Bento de Jesus Caraça
 - Cursos: Programas educacionais oferecidos pela escola
+- Admin: Usuário com acesso ao painel administrativo
+- Dashboard: Painel de controle administrativo
 
 ## Decisões de Design
 - Uso de Bootstrap 5 para interface responsiva
@@ -31,16 +37,26 @@ Este projeto é um site institucional para a Escola Profissional Bento de Jesus 
   - GLightbox para galerias
   - Swiper para carrosséis
   - Bootstrap Icons para ícones
+  - SweetAlert2 para notificações
+  - Dropzone.js para uploads
 
 ## Estrutura de Dados
-- Tabela 'obras': Armazena informações sobre as obras de Bento de Jesus Caraça
-- Campos principais:
+- Tabela 'users': Armazena informações dos administradores
+  - ID
+  - Email
+  - Senha (hash)
+  - Nome
+  - Role (admin/editor)
+  - Timestamps
+
+- Tabela 'obras': Armazena informações sobre as obras
   - ID
   - Título
   - Descrição
   - Ano de publicação
   - Link para PDF
   - Imagem de capa
+  - Timestamps
 
 ## Fluxos de Processamento
 1. **Visualização de Obras**:
@@ -58,6 +74,12 @@ Este projeto é um site institucional para a Escola Profissional Bento de Jesus 
    - Breadcrumbs
    - Links internos
 
+4. **Administração**:
+   - Autenticação de usuários
+   - Gerenciamento de obras
+   - Upload de arquivos
+   - Logs de atividades
+
 ## Áreas de Automação
 1. **Validação de Formulários**:
    - Verificação de campos obrigatórios
@@ -74,6 +96,11 @@ Este projeto é um site institucional para a Escola Profissional Bento de Jesus 
    - Sitemap dinâmico
    - Otimização de imagens
 
+4. **Segurança**:
+   - Proteção contra XSS
+   - Validação de uploads
+   - Controle de sessão
+
 ## Análises Necessárias
 1. **Performance**:
    - Tempo de carregamento
@@ -89,6 +116,7 @@ Este projeto é um site institucional para a Escola Profissional Bento de Jesus 
    - Proteção contra XSS
    - Validação de inputs
    - Sanitização de outputs
+   - Proteção contra força bruta
 
 ## Sugestões de Melhorias
 1. **Interface**:
@@ -100,11 +128,17 @@ Este projeto é um site institucional para a Escola Profissional Bento de Jesus 
    - Sistema de busca
    - Filtros avançados
    - Compartilhamento social
+   - Editor WYSIWYG para obras
 
 3. **Performance**:
    - Implementar lazy loading
    - Otimizar imagens
    - Melhorar cache
+
+4. **Administração**:
+   - Dashboard com estatísticas
+   - Sistema de backup
+   - Logs detalhados
 
 ## Contexto Histórico
 - Bento de Jesus Caraça foi um importante matemático e intelectual português
@@ -117,9 +151,15 @@ Este projeto é um site institucional para a Escola Profissional Bento de Jesus 
 - Apache/Nginx
 - Suporte a PDF
 - Compatibilidade com navegadores modernos
+- Extensões PHP:
+  - GD para manipulação de imagens
+  - PDO para conexão com banco
+  - Session para autenticação
 
 ## Manutenção
 - Atualização regular de conteúdo
 - Backup de banco de dados
 - Monitoramento de logs
-- Atualização de bibliotecas 
+- Atualização de bibliotecas
+- Verificação de segurança
+- Manutenção de sessões 
