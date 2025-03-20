@@ -1,0 +1,48 @@
+# Arquivos de ambiente
+.env
+.env.local
+.env.*.local
+
+# Dependências
+/vendor/
+/node_modules/
+
+# Arquivos de IDE
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+
+# Arquivos de sistema
+.DS_Store
+Thumbs.db
+
+# Arquivos de log
+*.log
+/logs/
+error_log
+access_log
+
+# Arquivos de cache
+/cache/
+*.cache
+
+# Arquivos de configuração local
+config.local.php
+database.local.php
+
+# Arquivos temporários
+*.tmp
+*.temp
+*.swp
+*.swo
+
+# Arquivos de backup
+*.bak
+*.backup
+*~
+
+# Sensitive files
+*.pem
+*.key
+*.cert 
